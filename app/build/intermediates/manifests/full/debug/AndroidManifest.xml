@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.pou.android.NFCProject"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="15" />
+uu
+    <uses-permission android:name="android.permission.NFC" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.pou.android.NFCProject.TabContentActivity"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity android:name="com.pou.android.NFCProject.com.pou.android.content.activities.MovieContentActivity" />
+        <activity android:name="com.pou.android.NFCProject.com.pou.android.content.activities.TextContentActivity" />
+        <activity android:name="com.pou.android.NFCProject.com.pou.android.content.activities.PictureContentActivity" />
+        <activity
+            android:name="com.pou.android.NFCProject.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- Handle notes detected from outside our application -->
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_list" />
+        </activity>
+    </application>
+
+</manifest>
